@@ -1,11 +1,10 @@
-from keep_alive import keep_alive
 import os
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes
+from keep_alive import keep_alive
 
 # Получаем токен из переменных окружения
 TOKEN = os.getenv('TOKEN')
-
 
 # Функция на команду /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -14,15 +13,12 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.reply_text("🚨 Фишка ➡️", reply_markup=reply_markup)
 
-
-# Функция при нажатии кнопки
+# Функция при нажатии на кнопку
 async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
 
-    await context.bot.send_message(chat_id=query.message.chat.id,
-                                   text="ФИШКА!!!")
-
+    await context.bot.send_message(chat_id=query.message.chat_id, text="ФИШКА!!!")
 
 # Запуск бота
 app = ApplicationBuilder().token(TOKEN).build()
