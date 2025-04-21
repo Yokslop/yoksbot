@@ -14,7 +14,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     message = await update.message.reply_text("🚨 Фишка ➡️", reply_markup=reply_markup)
 
     # Ожидание 5 минут (300 секунд)
-    await asyncio.sleep(3)
+    await asyncio.sleep(300)
 
     # Попытка удалить сообщение
     try:
@@ -30,7 +30,7 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
     message = await context.bot.send_message(chat_id=query.message.chat_id, text="ФИШКА!!!")
 
     # Ожидание 5 минут (300 секунд)
-    await asyncio.sleep(3)
+    await asyncio.sleep(300)
 
     # Попытка удалить сообщение
     try:
